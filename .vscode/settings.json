@@ -1,0 +1,9 @@
+{
+    "C_Cpp.errorSquiggles": "EnabledIfIncludesResolve",
+    "problems.showCurrentInStatus": true,
+    "markdown.experimental.validate.enabled": true,
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "files.associations": {
+        "iostream": "cpp"
+    }
+}
