@@ -22,26 +22,51 @@ void insertAtHead(Node* & head ,int info)
 }
 
 
-void deletenode(Node* head,int pos)
+void deletenode(Node* &head,int pos)
 { 
+    if(pos==1)
+    {
+        Node*temp=head;
+      head=head->next;
+      delete temp;
+    }
     //deletion at particular position
+    else {
     Node*curr=head;
     Node*prev=NULL;
-    int cnt=0; 
-    while(cnt<=pos)
+    int cnt=1; 
+    while(cnt<pos)
     {
         prev=curr;
         curr=curr->next;
         cnt++;
     }
     prev->next=curr->next;
+    // curr->next=NULL;
      delete curr;
+    }
 
 } 
+void print(Node* & head)
+{
+    Node *temp = head;
+    while(temp != NULL)
+    {
+        cout<<temp->data<<"  ";
+        temp=temp->next;
+    }
+}
 
 int main()
 {
     Node* start=new Node(23);
     insertAtHead(start,34);
+    insertAtHead(start,4);
+    insertAtHead(start,98);
+    print(start);
+    cout<<"start="<<start->data<<endl;
+    deletenode(start,1);
+    print(start);
+    
     return 0;
 }
