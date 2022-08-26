@@ -42,7 +42,7 @@ void deletenode(Node* &head,int pos)
         cnt++;
     }
     prev->next=curr->next;
-    // curr->next=NULL;
+    curr->next=NULL;
      delete curr;
     }
 
