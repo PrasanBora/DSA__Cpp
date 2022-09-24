@@ -34,7 +34,7 @@ class stackk
          else 
          cout<<"stack underflow";
     }
-     
+    
      int peek()
      {
          if(top>-1 && top <size)
