@@ -31,10 +31,47 @@ node * buildtree(node * root)
          
    }
    
+   void inorder(node * root) //LNR
+   {
+    if(root==NULL)
+     return;
+     inorder(root->left);
+     cout<<root->data<<" ";
+     inorder(root->right);
+
+   }
+   void postorder(node * root) //LRN
+   {
+     if( !root)
+     return;
+     postorder(root->left);
+     postorder(root->right);
+     cout<<root->data<<" ";
+
+   }
+   void preorder(node * root)
+   {
+      if( !root)
+     return;
+       cout<<root->data<<" ";
+     preorder(root->left);
+     preorder(root->right);
+   }
 int main()
 {
     node * root =NULL;
     root = buildtree(root);
+    
+    cout<<"Inorder traversal :"<<endl;
+    inorder(root);
+    cout<<endl;
+    cout<<"Postorder traversal :"<<endl;
+    postorder(root);
+    cout<<endl;
+    cout<<"Preorder traversal :"<<endl;
+    preorder(root);
+    cout<<endl;
 
+    // 1 2 3 -1 -1 5 -1 9 -1 -1 4 0 7 -1 -1 -1 11 -1 -1
     return 0;
 }
