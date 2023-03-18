@@ -46,7 +46,7 @@ class trie
     }
     else // absent 
     {
-        cout<<"newnode"<<"--"<<str[0]<<endl;
+        // cout<<"newnode"<<"--"<<str[0]<<endl;
         child=new trienode(str[0]);
         root->children[index]=child;
     }
