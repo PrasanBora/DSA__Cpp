@@ -5,12 +5,37 @@ using namespace std;
 void dfs( int node,int parent,vector<bool>&vis,vector<int>&disc,
            vector<int>&low,vector<int>&ap,unordered_map<int,list<int>>&adj
            ,int &timer)
-           {
+        {
              vis[node]=1;
+             int child=0;
              disc[node]=low[node]=timer++;
-             
+             for( auto it: adj[node])
+             {
+                if(it==parent)
+                 continue;
+                if(!vis[it])
+                {
+                    dfs(it,node,vis,disc,low,ap,adj,timer);
+                    low[node]=min(low[node],low[it]);
 
-           }
+                    //check for ap
+                    if(low[it]>=disc[node] && parent != -1)
+                    {
+                        ap[node]=true;
+                    }
+                    child++;
+                }
+                else
+                {
+                     low[node]=min(low[node],disc[it]);
+                }
+                if(parent == -1 && child >0)
+                {
+                    ap[node]=true;
+                }
+             }
+
+        }
 int main()
 {
     int n=5;
@@ -25,14 +50,14 @@ int main()
     unordered_map<int,list<int>>adj;
     for(int i=0;i<edg.size();i++)
     {
-      int u=edg[i][0];
-      int v=edg[i][1];
+      int u=edg[i].first;
+      int v=edg[i].second;
       adj[u].push_back(v);
       adj[v].push_back(u);
 
     }
     int timer=0;
-    vector<bool>vis(n,0);
+    vector<bool>vis(n);
     vector<int>disc(n,-1);
     vector<int>low(n,-1);
     vector<int>ap(n,0);
@@ -47,7 +72,8 @@ for(int i=0;i<n;i++)
  cout<<endl<<"Articulation List "<<endl;
 for(int i=0;i<n;i++)
     {
-      cout<<ap[i]<<"  ";
+        if(ap[i]!=0)
+      cout<<i<<"  ";
     }
     cout<<endl;
 

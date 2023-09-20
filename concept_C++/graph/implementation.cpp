@@ -4,7 +4,7 @@ using namespace std;
 class graph
 {
 public:
-    map<int,list<int>>grp ;
+map<int,list<int>>grp ;
 void insert(int u ,int v,bool directed)
 {
   grp[u].push_back(v);
